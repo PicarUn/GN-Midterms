@@ -60,5 +60,9 @@ public class PlayerCombat : NetworkBehaviour
         System.Array.Sort(spawns, (a, b) => a.name.CompareTo(b.name));
         RespawnRpc(spawns[(int)(OwnerClientId % 2)].transform.position);
     }
+    public void AddAmmo(int amount) // server only
+    {
+        Ammo.Value = Mathf.Min(Ammo.Value + amount, 40);
+    }
 
 }
